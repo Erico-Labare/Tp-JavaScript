@@ -1,6 +1,4 @@
-function calculerAvance(a, b, operation) {
-    return operation(a, b);
-}
+const calculerAvance = (a, b, operation) => operation(a, b);
 
 //function puissance(a, b) {
 //    return Math.pow(a, b);
