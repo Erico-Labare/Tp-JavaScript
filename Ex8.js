@@ -1,6 +1,6 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
-const nombreAleatoire = Math.floor(Math.random() * 100) + 1;
+const nombreAleatoire = Math.floor(Math.random() * 99) + 1;
 let essaisRestants = 5;
 
 console.log("Bienvenue dans le jeu de devinettes !");

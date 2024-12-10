@@ -16,8 +16,8 @@ function genererMotDePasse(longueur) {
     motDePasse += chiffres.charAt(Math.floor(Math.random() * chiffres.length));
 
     for (let i = motDePasse.length; i < longueur; i++) {
-        const indexAleatoire = Math.floor(Math.random() * tousLesCaracteres.length);
-        motDePasse += tousLesCaracteres.charAt(indexAleatoire);
+        const aleatoire = Math.floor(Math.random() * tousLesCaracteres.length);
+        motDePasse += tousLesCaracteres.charAt(aleatoire);
     }
 
     return motDePasse.split('').sort(() => Math.random() - 0.5).join('');
