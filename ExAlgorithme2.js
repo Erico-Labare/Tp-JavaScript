@@ -22,4 +22,4 @@ const seuil = 14;
 const resultat = analyserEtudiants(etudiants, seuil);
 
 console.log("Étudiants avec une note supérieure à", seuil, ":", resultat.etudiantsFiltres);
-console.log("Moyenne des notes :", resultat.moyenne.toFixed(2));
+console.log("Moyenne des notes :", resultat.moyenne);

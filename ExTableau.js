@@ -1,35 +1,41 @@
-class Livre {
-    constructor(titre, auteur) {
-        this.titre = titre;
-        this.auteur = auteur;
+// Comme "product" j'ai utilisé des livres
+
+let bibliotheque = [];
+
+function ajouterLivre(titre) {
+    if (!bibliotheque.includes(titre.toLowerCase())) {
+        bibliotheque.push(titre.toLowerCase());
+        console.log(`Le livre "${titre}" a été ajouté.`);
+    } else {
+        console.log(`Le livre "${titre}" existe déjà dans la bibliothèque.`);
     }
 }
 
-class Bibliotheque {
-    constructor() {
-        this.livres = [];
-    }
-
-    ajouterLivre(livre) {
-        this.livres.push(livre);
-        console.log(`Le livre "${livre.titre}" de ${livre.auteur} a été ajouté.`);
-    }
-
-    rechercherParTitre(titre) {
-        const livre = this.livres.find(livre => livre.titre.toLowerCase() === titre.toLowerCase());
-        if (livre) {
-            return `Livre trouvé : "${livre.titre}" par ${livre.auteur}`;
-        } else {
-            return `Aucun livre trouvé avec le titre "${titre}"`;
-        }
+function supprimerLivre(titre) {
+    const index = bibliotheque.indexOf(titre.toLowerCase());
+    if (index !== -1) {
+        bibliotheque.splice(index, 1);
+        console.log(`Le livre "${titre}" a été supprimé.`);
+    } else {
+        console.log(`Aucun livre trouvé avec le titre "${titre}", impossible de supprimer.`);
     }
 }
 
-const maBibliotheque = new Bibliotheque();
+function rechercherParTitre(titre) {
+    if (bibliotheque.includes(titre.toLowerCase())) {
+        return `Livre trouvé : "${titre}"`;
+    } else {
+        return `Aucun livre trouvé avec le titre "${titre}"`;
+    }
+}
 
-maBibliotheque.ajouterLivre(new Livre("Le Petit Prince", "Antoine de Saint-Exupéry"));
-maBibliotheque.ajouterLivre(new Livre("1984", "George Orwell"));
-maBibliotheque.ajouterLivre(new Livre("Le Seigneur des Anneaux", "J.R.R. Tolkien"));
+ajouterLivre("Le Petit Prince");
+ajouterLivre("1984");
+ajouterLivre("Le Seigneur des Anneaux");
 
-console.log(maBibliotheque.rechercherParTitre("1984"));
-console.log(maBibliotheque.rechercherParTitre("Harry Potter"));
+console.log(rechercherParTitre("1984")); // Trouvé
+console.log(rechercherParTitre("Harry Potter")); // Non trouvé
+
+supprimerLivre("1984"); // Suppression réussie
+console.log(rechercherParTitre("1984")); // Non trouvé
+supprimerLivre("Harry Potter"); // Non trouvé, impossible de supprimer
