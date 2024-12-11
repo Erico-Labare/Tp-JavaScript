@@ -1,7 +1,7 @@
 const prompt = require("prompt-sync")({ sigint: true });
 
 function jeuMotMystere() { 
-    const mots = ["jeu", "code", "javascript", "ordinateur", "coffre"];
+    const mots = ["jeu", "code", "cote", "javascript", "ordinateur", "coffre"];
     const motMystere = mots[Math.floor(Math.random() * mots.length)];
     const tentativesMax = 6;
     let tentativesRestantes = tentativesMax;
@@ -17,19 +17,19 @@ function jeuMotMystere() {
         const lettre = prompt("Proposez une lettre : ").toLowerCase();
 
         if (!lettre || lettre.length !== 1 || !/[a-z]/.test(lettre)) {
-            console.log("Veuillez entrer une seule lettre valide.");
+            console.log("\nVeuillez entrer une seule lettre valide.");
             continue;
         }
 
         if (lettresProposees.has(lettre)) {
-            console.log("Vous avez déjà proposé cette lettre.");
+            console.log("\nVous avez déjà proposé cette lettre.");
             continue;
         }
 
         lettresProposees.add(lettre);
 
         if (motMystere.includes(lettre)) {
-            console.log(`Bonne nouvelle ! La lettre "${lettre}" est dans le mot.`);
+            console.log(`\nBonne nouvelle ! La lettre "${lettre}" est dans le mot.`);
             for (let i = 0; i < motMystere.length; i++) {
                 if (motMystere[i] === lettre) {
                     motPartiel[i] = lettre;
@@ -37,7 +37,7 @@ function jeuMotMystere() {
             }
         } else {
             tentativesRestantes--;
-            console.log(`Dommage ! La lettre "${lettre}" n'est pas dans le mot. Il vous reste ${tentativesRestantes} tentatives.`);
+            console.log(`\nDommage ! La lettre "${lettre}" n'est pas dans le mot. Il vous reste ${tentativesRestantes} tentatives.`);
         }
 
         if (!motPartiel.includes("_")) {
