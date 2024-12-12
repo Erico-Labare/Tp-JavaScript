@@ -19,7 +19,7 @@ class Robot {
                 this.position.x += 1;
                 break;
             default:
-                console.log("Direction invalide. Utilisez : haut, bas, gauche ou droite.");
+                console.log("Direction incorrect. Utilisez soit haut, bas, gauche ou droite.");
         }
     }
 
@@ -42,6 +42,9 @@ const monRobot = new Robot("Nono le petit robot");
 monRobot.afficherPosition();
 monRobot.seDeplacer("haut");
 monRobot.seDeplacer("droite");
+monRobot.seDeplacer("droite");
+monRobot.seDeplacer("bas");
+monRobot.seDeplacer("gauche");
 monRobot.afficherPosition();
 monRobot.nettoyer();
 monRobot.reinitialiserPosition();
