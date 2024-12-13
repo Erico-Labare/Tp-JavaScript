@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dessin</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            display: block;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dessin</h1>
+    <p>Utilises ta souris pour dessiner dans la zone.</p>
+    <canvas id="zone-dessin" width="600" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('zone-dessin');
+        const ctx = canvas.getContext('2d');
+
+        let dessinEnCours = false;
+        let dernierX = 0;
+        let dernierY = 0;
+
+        canvas.addEventListener('mousedown', (e) => {
+            dessinEnCours = true;
+            [dernierX, dernierY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (!dessinEnCours) return;
+            ctx.beginPath();
+            ctx.moveTo(dernierX, dernierY);
+            ctx.lineTo(e.offsetX, e.offsetY);
+            ctx.strokeStyle = 'black';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            [dernierX, dernierY] = [e.offsetX, e.offsetY];
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            dessinEnCours = false;
+        });
+
+        canvas.addEventListener('mouseout', () => {
+            dessinEnCours = false;
+        });</script>
+</body>
+
+</html>

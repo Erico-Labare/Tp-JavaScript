@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Déplacement avec le clavier</title>
+    <style>
+        #zone {
+            width: 500px;
+            height: 500px;
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            position: relative;
+        }
+        #carre {
+            width: 50px;
+            height: 50px;
+            background-color: #007BFF;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="zone">
+        <div id="carre"></div>
+    </div>
+    <script>
+        const carre = document.getElementById('carre');
+const zone = document.getElementById('zone');
+
+const zoneRect = zone.getBoundingClientRect();
+const carreSize = carre.getBoundingClientRect().width;
+
+let x = 0;
+let y = 0;
+
+document.addEventListener('keydown', (event) => {
+    const step = 10;
+
+    switch (event.key) {
+        case 'ArrowUp':
+            if (y > 0) y -= step;
+            break;
+        case 'ArrowDown':
+            if (y < zoneRect.height - carreSize) y += step;
+            break;
+        case 'ArrowLeft':
+            if (x > 0) x -= step; 
+            break;
+        case 'ArrowRight':
+            if (x < zoneRect.width - carreSize) x += step; 
+            break;
+    }
+
+    carre.style.top = `${y}px`;
+    carre.style.left = `${x}px`;
+})
+    </script>
+</body>
+</html>

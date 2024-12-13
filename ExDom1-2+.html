@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modification de Texte</title>
+</head>
+
+<body>
+    <h2>Liste</h2>
+    <input type="text" id="nouvelElement" placeholder="Ajouter un élément">
+    <button id="ajouterBouton">Ajouter</button>
+    <ul id="liste"></ul>
+
+    <script>
+        const liste = document.getElementById("liste");
+        const ajouterBouton = document.getElementById("ajouterBouton");
+        const nouvelElementInput = document.getElementById("nouvelElement");
+
+        ajouterBouton.addEventListener("click", () => {
+            const texte = nouvelElementInput.value.trim();
+            if (texte) {
+                ajouterElementListe(texte);
+                nouvelElementInput.value = "";
+            }
+        });
+
+        function ajouterElementListe(texte) {
+            const li = document.createElement("li");
+            li.textContent = texte;
+
+            const boutonModifier = document.createElement("button");
+            boutonModifier.textContent = "Modifier";
+            boutonModifier.addEventListener("click", () => {
+                const nouveauTexte = prompt("Modifier l'élément :", li.textContent);
+                if (nouveauTexte !== null && nouveauTexte.trim() !== "") {
+                    li.firstChild.textContent = nouveauTexte.trim();
+                }
+            });
+
+            const boutonSupprimer = document.createElement("button");
+            boutonSupprimer.textContent = "Supprimer";
+            boutonSupprimer.addEventListener("click", () => {
+                li.remove();
+            });
+
+            li.appendChild(boutonModifier);
+            li.appendChild(boutonSupprimer);
+
+            liste.appendChild(li);
+        }
+    </script>
+</body>
+
+</html>

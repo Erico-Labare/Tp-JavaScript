@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur</title>
+</head>
+
+<body>
+    <h1>Compteur</h1>
+    <div id="compteur">0</div>
+    <button id="ajouter">Ajouter</button>
+    <button id="reinitialiser">Réinitialiser</button>
+    <script>
+        const compteurElement = document.getElementById('compteur');
+        const boutonAjouter = document.getElementById('ajouter');
+        const boutonReinitialiser = document.getElementById('reinitialiser');
+
+        let compteur = 0;
+
+        boutonAjouter.addEventListener('click', () => {
+            compteur++;
+            compteurElement.textContent = compteur;
+        });
+
+        boutonReinitialiser.addEventListener('click', () => {
+            compteur = 0;
+            compteurElement.textContent = compteur;
+        });
+    </script>
+</body>
+
+</html>

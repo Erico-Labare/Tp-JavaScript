@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modification de Texte</title>
+</head>
+
+<body>
+    <p id="texte">Default</p>
+    <button id="bouton">Changer le texte</button>
+
+    <script>
+        const bouton = document.getElementById("bouton");
+        const texte = document.getElementById("texte");
+
+        bouton.addEventListener("click", () => {
+            texte.textContent = "Modifié";
+        })  
+    </script>
+</body>
+
+</html>

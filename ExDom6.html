@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afficher/Masquer un Élément</title>
+</head>
+
+<body>
+    <h1>Afficher/Masquer un Élément</h1>
+    <button id="toggleButton">Masquer</button>
+    <p id="texte">Blablablablabliblou.</p>
+    <script>
+        const bouton = document.getElementById('toggleButton');
+        const paragraphe = document.getElementById('texte');
+
+        bouton.addEventListener('click', () => {
+            if (paragraphe.style.display === 'none') {
+                paragraphe.style.display = 'block';
+                bouton.textContent = 'Masquer';
+            } else {
+                paragraphe.style.display = 'none';
+                bouton.textContent = 'Afficher';
+            }
+        });
+    </script>
+</body>
+
+</html>

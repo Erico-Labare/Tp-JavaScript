@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste</title>
+</head>
+
+<body>
+    <form id="formulaire">
+        <input type="text" id="inputTexte" placeholder="Entrez un texte">
+        <button type="button" id="boutonAjouter">Ajouter</button>
+    </form>
+    <ul id="liste"></ul>
+
+    <script>
+        const inputTexte = document.getElementById("inputTexte");
+        const boutonAjouter = document.getElementById("boutonAjouter");
+        const liste = document.getElementById("liste");
+
+        boutonAjouter.addEventListener("click", () => {
+            const texte = inputTexte.value.trim();
+
+            if (texte !== "") {
+                const nouvelElement = document.createElement("li");
+                nouvelElement.textContent = texte;
+                liste.appendChild(nouvelElement);
+
+                inputTexte.value = "";
+            } else {
+                alert("Veuillez entrer un texte.");
+            }
+        })        
+    </script>
+</body>
+
+</html>

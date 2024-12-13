@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie d'Images</title>
+    <style>
+        .grande-image {
+            width: 500px;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grande-image img {
+            max-width: 100%;
+            max-height: 100%;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            opacity: 0;
+        }
+
+        .grande-image img.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .miniatures {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .miniatures img {
+            width: 100px;
+            height: 100px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.3s, border 0.3s;
+        }
+
+        .miniatures img:hover {
+            transform: scale(1.1);
+            border: 2px solid #007BFF;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Galerie d'Images</h1>
+    <div class="grande-image">
+        <img id="imagePrincipale" src="" alt="Grande image">
+    </div>
+    <div class="miniatures">
+        <img src="4acfb65b2f6ff792f533619432e01b97.png" alt="Miniature 1">
+        <img src="Everything is fine.jpg" alt="Miniature 2">
+        <img src="raw.jpg" alt="Miniature 3">
+        <img src="ron-swanson.jpg" alt="Miniature 4">
+    </div>
+    <script>
+        const imagePrincipale = document.getElementById('imagePrincipale');
+        const miniatures = document.querySelectorAll('.miniatures img');
+
+        miniatures.forEach(miniature => {
+            miniature.addEventListener('click', () => {
+                imagePrincipale.src = miniature.src;
+
+                imagePrincipale.classList.remove('visible');
+                setTimeout(() => {
+                    imagePrincipale.classList.add('visible');
+                }, 10);
+            });
+        });
+
+        if (miniatures.length > 0) {
+            imagePrincipale.src = miniatures[0].src;
+            imagePrincipale.classList.add('visible');
+        }
+    </script>
+</body>
+
+</html>

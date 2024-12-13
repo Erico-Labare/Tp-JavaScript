@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Couleurs</title>
+    <style>
+        .rouge {
+            background-color: red;
+        }
+
+        .vert {
+            background-color: green;
+        }
+
+        .bleu {
+            background-color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Changer la couleur de fond</h1>
+    <button class="rouge" data-couleur="red">Rouge</button>
+    <button class="vert" data-couleur="green">Vert</button>
+    <button class="bleu" data-couleur="blue">Bleu</button>
+
+    <script>
+        const boutons = document.querySelectorAll("button");
+
+        boutons.forEach(bouton => {
+            bouton.addEventListener("click", () => {
+                const couleur = bouton.getAttribute("data-couleur");
+                document.body.style.backgroundColor = couleur;
+            });
+        });
+    </script>
+</body>
+
+</html>
